@@ -17,7 +17,7 @@ const newGuest = require('./routes/newGuest')
 serv.use('/api', newGuest) 
 
 serv.listen(port, ()=>{
-    console.log("connected");
+    console.log("connected on port" + port);
 });
 
 mongoose.connect(connectDB.wedding, { useNewUrlParser: true, useUnifiedTopology: true });
