@@ -1,18 +1,18 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const path = require('path');
-const connectDB = require('./connectDB');
+import express from 'express'
+import { connect, connection } from 'mongoose';
+import { json } from 'body-parser';
+import cors from 'cors';
+import path from 'path';
+import { wedding } from './connectDB';
 
 
 const serv = express();
 const port = process.env.PORT || 3001;
 
 serv.use(cors());
-serv.use(bodyParser.json());
+serv.use(json());
 
-const newGuest = require('./routes/newGuest')
+import newGuest from './routes/newGuest';
 
 serv.use('/api', newGuest) 
 
@@ -20,14 +20,14 @@ serv.listen(port, ()=>{
     console.log("connected");
 });
 
-mongoose.connect(connectDB.wedding, { useNewUrlParser: true, useUnifiedTopology: true });
+connect(wedding, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //mongoose.set('useFindAndModify', false);
 
-mongoose.connection.on('connected', () => {
+connection.on('connected', () => {
     console.log("success");
 });
 
-mongoose.connection.on('error', (err) => {
+connection.on('error', (err) => {
     console.log("not success" + err);
 });

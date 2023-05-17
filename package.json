@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "*",
     "cors": "*",
-    "express": "*",
+    "express": "^4.18.2",
     "mongoose": "*",
     "nodemon": "^2.0.6",
     "path": "*"
